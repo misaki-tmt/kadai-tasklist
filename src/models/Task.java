@@ -28,7 +28,7 @@ public class Task {
     private Integer id;
 
     //以下３項目、全て入力必須項目(nullable = false)
-    //作成日時：日付型
+    //登録日時：日付型
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
