@@ -42,13 +42,17 @@ public class CreateServlet extends HttpServlet {
             t.setContent(content);
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-
             t.setCreated_at(currentTime);
             t.setUpdated_at(currentTime);
 
+            //データベースに保存
             em.getTransaction().begin();
             em.persist(t);
             em.getTransaction().commit();
+
+            //flush処理
+            request.getSession().setAttribute("flush", "登録が完了しました。");
+
             em.close();
 
             response.sendRedirect(request.getContextPath() + "/index");
